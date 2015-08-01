@@ -1,0 +1,33 @@
+.grid-column(@n; @offset: 0;) {
+	@width: (@grid-unit*3)*@n+(@grid-margin*(@n - 1))+@offset;
+}
+
+.bg-img-uri(@img; @repeat: no-repeat; @position: center center; @attachment: scroll;) {
+	background: data-uri('@{images}@{img}') @repeat @position @attachment;
+}
+
+.bg-img(@img; @repeat: no-repeat; @position: center center; @attachment: scroll;) {
+	background: url('@{images}@{img}') @repeat @position @attachment;
+}
+
+.placeholder(@color) {
+	::-webkit-input-placeholder {
+		color: @color;
+		opacity: 1;
+	}
+
+	:-moz-placeholder {
+		color: @color;
+		opacity: 1;
+	}
+
+	::-moz-placeholder {
+		color: @color;
+		opacity: 1;
+	}
+
+	:-ms-input-placeholder {
+		color: @color;
+		opacity: 1;
+	}
+}

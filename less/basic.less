@@ -1,0 +1,99 @@
+@import (inline) "../bower_components/normalize.css/normalize.css";
+@import (inline) "../bower_components/html5-boilerplate/dist/css/main.css";
+@import url(http://fonts.googleapis.com/css?family=Lato:400,700,300,400italic|Damion|Raleway|Lora);
+
+*, a, a:active, a:focus {
+	outline: none;
+}
+
+html, body {
+	height: 100%;
+	background-color: @clouds;
+	font: 400 @base-font-size~"/"@baseline @lato;
+	color: @asbestos;
+}
+
+a {
+	color: @asbestos;
+	outline: 0;
+}
+
+input, textarea, button {
+	display: block;
+	border: none;
+	color: @white;
+}
+
+input, textarea {
+	margin: 0px 0px @baseline 0px;
+	padding: 0px (@grid-unit/2);
+	background-color: @silver;
+
+	&:focus {
+		background-color: lighten(@silver, @lighten);
+	}
+}
+
+input {
+	height: @baseline;
+	font: (@rhythm*2)~"/"(@rhythm*2) @lato;
+	letter-spacing: 0.01em;
+}
+
+textarea {
+	height: (@baseline*4);
+	resize: none;
+	font: 16px ~"/"@baseline @damion;
+	letter-spacing: 0.06em;
+}
+
+sup {
+	font-size: 8px;
+}
+
+.placeholder(@white);
+
+button {
+	position: relative;
+	height: @baseline;
+	padding: 0px;
+	border-bottom: 2px solid @nephritis;
+	background-color: @emerald;
+	font: @base-font-size @lato;
+	letter-spacing: 0.06em;
+	overflow: hidden;
+
+	&:hover {
+		background-color: lighten(@emerald, @lighten)
+	}
+
+	&:active {
+		top: 1px;
+		border-bottom: none;
+	}
+
+	&.disabled {
+		cursor: not-allowed;
+		opacity: 0.5;
+		pointer-events: none;
+	}
+
+	.ripple {
+		position: absolute;
+		display: block;
+		border-radius: 100%;
+		transform: scale(0);
+		background-color: fade(@asbestos, 60%);
+
+		&.animation {
+			animation: ripple 0.4s linear;
+		}
+	}
+}
+
+@keyframes ripple {
+	100% {
+		transform: scale(2.5);
+		opacity: 0;
+	}
+}

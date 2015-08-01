@@ -1,0 +1,25 @@
+{
+  "name": "MinimalTimeline.js",
+  "version": "0.1.0",
+  "homepage": "https://github.com/PAlexcom/MinimalTimeline.js",
+  "authors": [
+    "P.Alex <web.is.art@p-alex.com>"
+  ],
+  "description": "Minimal Timeline",
+  "keywords": [
+    "timeline"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "~2.1.4",
+    "normalize.css": "~3.0.3",
+    "html5-boilerplate": "~5.2.0"
+  }
+}
