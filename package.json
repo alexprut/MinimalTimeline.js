@@ -18,15 +18,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/PAlexcom/MinimalTimeline.js.git"
+    "url": "https://github.com/alexprut/MinimalTimeline.js.git"
   },
   "keywords": [
     "timeline"
   ],
-  "author": "P.Alex",
+  "author": "Alex Prut",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/PAlexcom/MinimalTimeline.js/issues"
+    "url": "https://github.com/alexprut/MinimalTimeline.js/issues"
   },
-  "homepage": "https://github.com/PAlexcom/MinimalTimeline.js"
+  "homepage": "https://github.com/alexprut/MinimalTimeline.js"
 }

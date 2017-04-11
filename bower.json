@@ -1,9 +1,9 @@
 {
   "name": "minimal-timeline.js",
   "version": "0.1.0",
-  "homepage": "https://github.com/PAlexcom/MinimalTimeline.js",
+  "homepage": "https://github.com/alexprut/MinimalTimeline.js",
   "authors": [
-    "P.Alex <web.is.art@p-alex.com>"
+    "Alex Prut <mail@alexprut.com>"
   ],
   "description": "Minimal Timeline",
   "keywords": [

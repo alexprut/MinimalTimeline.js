@@ -3,35 +3,6 @@
 @import 'basic.less';
 @import 'minimalTimeline.less';
 
-.arrow {
-	display: block;
-	width: 60px;
-	height: 18px;
-	margin: 0 auto;
-
-	&:last-of-type {
-		margin-bottom: (@baseline*2+6);
-	}
-
-}
-
-.arrow-up {
-	.bg-img-uri('arrow-up.png');
-
-	&:hover {
-		.bg-img-uri('arrow-up-hover.png');
-	}
-}
-
-.arrow-down {
-	margin-bottom: (@baseline*8+6);
-	.bg-img-uri('arrow-down.png');
-
-	&:hover {
-		.bg-img-uri('arrow-down-hover.png');
-	}
-}
-
 .number {
 	font-family: @raleway;
 }

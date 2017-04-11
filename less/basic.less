@@ -18,33 +18,10 @@ a {
 	outline: 0;
 }
 
-input, textarea, button {
+button {
 	display: block;
 	border: none;
 	color: @white;
-}
-
-input, textarea {
-	margin: 0px 0px @baseline 0px;
-	padding: 0px (@grid-unit/2);
-	background-color: @silver;
-
-	&:focus {
-		background-color: lighten(@silver, @lighten);
-	}
-}
-
-input {
-	height: @baseline;
-	font: (@rhythm*2)~"/"(@rhythm*2) @lato;
-	letter-spacing: 0.01em;
-}
-
-textarea {
-	height: (@baseline*4);
-	resize: none;
-	font: 16px ~"/"@baseline @damion;
-	letter-spacing: 0.06em;
 }
 
 sup {

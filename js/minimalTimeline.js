@@ -1,5 +1,6 @@
+'use strict'
+
 function Entry (title, deep, endDate, type, html) {
-  'use strict'
   this.title = title
   this.deep = deep
   this.endDate = endDate
@@ -8,7 +9,6 @@ function Entry (title, deep, endDate, type, html) {
 }
 
 function Timeline (settings) {
-  'use strict'
   this.entries = settings && settings.entries || []
   this.minDeep = settings && settings.minDeep || 1
   this.currentDeep = settings && settings.currentDeep || 1
@@ -16,7 +16,6 @@ function Timeline (settings) {
 }
 
 Timeline.prototype.addEntry = function (title, deep, endDate, type, html) {
-  'use strict'
   this.entries.push(
     new Entry(title, deep, endDate, type, html)
   )
@@ -26,7 +25,6 @@ Timeline.prototype.addEntry = function (title, deep, endDate, type, html) {
 }
 
 Timeline.prototype.getEntriesFromToDeep = function (fromDeep, toDeep, type) {
-  'use strict'
   var tmpEntries = []
 
   for (var i = 0, x = this.entries.length; i < x; i++) {
@@ -44,7 +42,6 @@ Timeline.prototype.getEntriesFromToDeep = function (fromDeep, toDeep, type) {
 }
 
 Timeline.prototype.hasEntriesForNextDeep = function (type) {
-  'use strict'
   for (var i = 0, x = this.entries.length; i < x; i++) {
     var entry = this.entries[i]
     var check = entry.deep > this.currentDeep
@@ -59,27 +56,22 @@ Timeline.prototype.hasEntriesForNextDeep = function (type) {
 }
 
 Timeline.prototype.getEntriesOfDeep = function (deep, type) {
-  'use strict'
   return this.getEntriesFromToDeep(deep, deep, type)
 }
 
 Timeline.prototype.getEntriesUpToDeep = function (type) {
-  'use strict'
   return this.getEntriesFromToDeep(this.minDeep, this.currentDeep, type)
 }
 
 Timeline.prototype.getNextDeepEntries = function (type) {
-  'use strict'
   return this.getEntriesOfDeep(++this.currentDeep, type)
 }
 
 Timeline.prototype.isLastDeep = function () {
-  'use strict'
   return (this.currentDeep === this.maxDeep)
 }
 
 $.fn.timeline = function () {
-  'use strict'
   var handler = $(this)
   var entries = handler.find('.box')
   var legendFilters = handler.find('.legend a')
