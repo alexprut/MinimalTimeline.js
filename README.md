@@ -4,7 +4,7 @@ MinimalTimeline.js
 
 > Minimal Timeline UI component for the web  
 
-Live demo: [http://alexprut.github.io/MinimalTimeline.js](http://palexcom.github.io/MinimalTimeline.js)
+Live demo: [http://alexprut.github.io/MinimalTimeline.js](http://alexprut.github.io/MinimalTimeline.js)
 
 ![Demo - MinimalTimeline.js](https://github.com/alexprut/MinimalTimeline.js/raw/master/img/demo.jpg)
 
@@ -16,6 +16,44 @@ Installation
     Run ```git clone https://github.com/alexprut/MinimalTimeline.js.git```
 * __Direct download__:  
     Download the last version from [here](https://github.com/alexprut/MinimalTimeline.js/archive/master.zip "download")
+
+Usage
+-----
+```html
+<div class="timeline">
+    <div class="legend clearfix">
+        <a class="blue" href="#" data-type="event">example</a>
+        <a href="#" data-type="big-goal">example</a>
+        <a class="yellow" href="#" data-type="book">example</a>
+    </div>
+    <div class="content">
+        <div class="details">
+            <span class="head"></span>
+            <span class="tail"></span>
+        </div>
+        <div class="block clearfix" data-year="2016">
+            <div class="box-date hidden">2016</div>
+            <div class="box yellow" data-end="current" data-type="book">
+                <span class="title">
+                    <a target="_blank" href="#example">
+                        example
+                    </a>
+                </span>
+                <span class="date">example</span>
+            </div>
+        </div>
+    </div>
+</div>
+<button>more</button>
+
+<script>
+    $(function () {
+        $('.timeline').timeline();
+    });
+</script>
+```
+
+For a complete example see [index.html](https://github.com/alexprut/MinimalTimeline.js/blob/staging/index.html)
 
 License
 -------
