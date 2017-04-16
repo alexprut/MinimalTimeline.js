@@ -8,8 +8,7 @@ Live demo: [http://alexprut.github.io/MinimalTimeline.js](http://alexprut.github
 
 ![Demo - MinimalTimeline.js](https://github.com/alexprut/MinimalTimeline.js/raw/master/img/demo.jpg)
 
-Installation
-------------
+##  Installation
 * __Bower__:  
     Run from your console/terminal ```bower install minimal-timeline.js --save-dev```
 * __From Source__:  
@@ -17,8 +16,7 @@ Installation
 * __Direct download__:  
     Download the last version from [here](https://github.com/alexprut/MinimalTimeline.js/archive/master.zip "download")
 
-Usage
------
+## Usage
 ```html
 <div class="timeline">
     <div class="legend clearfix">
@@ -55,6 +53,10 @@ Usage
 
 For a complete example see [index.html](https://github.com/alexprut/MinimalTimeline.js/blob/staging/index.html)
 
-License
--------
+#### Parameters
+|Name|Type|Description|Default|
+|----|----|-----------|-------|
+|isOneDeep|bool|to force or not the mode button to show all the entries with one click|false|
+
+## License
 MinimalTimeline.js is licensed under the MIT License – see the LICENSE file for details.

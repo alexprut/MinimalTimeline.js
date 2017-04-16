@@ -25,20 +25,20 @@ Timeline.prototype.addEntry = function (title, deep, endDate, type, html) {
 }
 
 Timeline.prototype.getEntriesFromToDeep = function (fromDeep, toDeep, type) {
-  var tmpEntries = []
+  var returnEntries = []
 
   for (var i = 0, x = this.entries.length; i < x; i++) {
     var entry = this.entries[i]
     var check = entry.deep >= fromDeep && entry.deep <= toDeep
 
     if (!type && check) {
-      tmpEntries.push(entry)
+      returnEntries.push(entry)
     } else if (type && check && (entry.type === type || type.indexOf(entry.type) !== -1)) {
-      tmpEntries.push(entry)
+      returnEntries.push(entry)
     }
   }
 
-  return tmpEntries
+  return returnEntries
 }
 
 Timeline.prototype.hasEntriesForNextDeep = function (type) {
@@ -71,12 +71,13 @@ Timeline.prototype.isLastDeep = function () {
   return (this.currentDeep === this.maxDeep)
 }
 
-$.fn.timeline = function () {
-  var handler = $(this)
-  var entries = handler.find('.box')
-  var legendFilters = handler.find('.legend a')
-  var moreButton = handler.find('button')
-  var content = handler.find('.content')
+$.fn.timeline = function (options) {
+  var isOneDeep = options && options.isOneDeep || false;
+  var $handler = $(this)
+  var $entries = $handler.find('.box')
+  var $legendFilters = $handler.find('.legend a')
+  var $moreButton = $handler.find('button')
+  var content = $handler.find('.content')
   var types = []
   var timeline = new Timeline()
 
@@ -103,14 +104,14 @@ $.fn.timeline = function () {
   }
 
   var addEntryDom = function (entry) {
-    var insertionBlock = handler.find('.block[data-year=' + (parseInt(entry.endDate.getFullYear()) + 1) + ']')
+    var insertionBlock = $handler.find('.block[data-year=' + (parseInt(entry.endDate.getFullYear()) + 1) + ']')
     var siblings = insertionBlock.find('.box')
     var insertionIndex = null
 
     entry.html = $(entry.html).css({'opacity': 0.1}).animate({'opacity': 1})
 
     if (!insertionBlock.length) {
-      insertionBlock = handler.find('.block').first()
+      insertionBlock = $handler.find('.block').first()
     }
 
     siblings.each(function (index) {
@@ -169,16 +170,16 @@ $.fn.timeline = function () {
     }
 
     if (!timeline.isLastDeep() && timeline.hasEntriesForNextDeep(type)) {
-      moreButton.trigger('toggle')
+      $moreButton.trigger('toggle')
     }
   }
 
   var clickFilters = function (event) {
     event.preventDefault()
-    var legendFilter = $(this)
-    var disabledSiblings = legendFilter.siblings().filter('.disabled')
-    var isEnabled = !legendFilter.hasClass('disabled')
-    var numFilters = legendFilters.length
+    var $legendFilter = $(this)
+    var disabledSiblings = $legendFilter.siblings().filter('.disabled')
+    var isEnabled = !$legendFilter.hasClass('disabled')
+    var numFilters = $legendFilters.length
 
     switch (numFilters) {
       case 1:
@@ -189,7 +190,7 @@ $.fn.timeline = function () {
         }
         break
       default:
-        var enabledFilters = legendFilter.siblings().filter(':not(.disabled)')
+        var enabledFilters = $legendFilter.siblings().filter(':not(.disabled)')
         var isEnabledJustLastFilter = disabledSiblings.length === (numFilters - 2)
 
         if (isEnabled && isEnabledJustLastFilter) {
@@ -200,28 +201,34 @@ $.fn.timeline = function () {
         break
     }
 
-    legendFilter.trigger('toggle')
+    $legendFilter.trigger('toggle')
   }
 
   var toggleMoreButton = function () {
-    if (moreButton.hasClass('disabled')) {
-      moreButton.removeClass('disabled').on('click', clickMoreButton)
+    if ($moreButton.hasClass('disabled')) {
+      $moreButton.removeClass('disabled').on('click', clickMoreButton)
     } else {
-      moreButton.addClass('disabled').off('click')
+      $moreButton.addClass('disabled').off('click')
     }
   }
 
   var clickMoreButton = function () {
-    showNextDeep(types)
+    if (isOneDeep) {
+      while (!timeline.isLastDeep()) {
+        showNextDeep(types)
+      }
+    } else {
+      showNextDeep(types)
+    }
 
     if (timeline.isLastDeep()) {
-      moreButton.trigger('toggle')
+      $moreButton.trigger('toggle')
     }
   }
 
   var init = function () {
     // Parse HTML and populate the Timeline
-    entries.each(function () {
+    $entries.each(function () {
       var $this = $(this)
 
       addEntryTimeline(
@@ -233,8 +240,8 @@ $.fn.timeline = function () {
       )
     }).filter('[data-deep]').remove()
 
-    moreButton.on('click', clickMoreButton).on('toggle', toggleMoreButton)
-    legendFilters.on('click', clickFilters).on('toggle', toggleFilters)
+    $moreButton.on('click', clickMoreButton).on('toggle', toggleMoreButton)
+    $legendFilters.on('click', clickFilters).on('toggle', toggleFilters)
   }
 
   init()
