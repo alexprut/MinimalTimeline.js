@@ -776,7 +776,7 @@ button.disabled {
 .legend__link_border_yellow {
   border-color: #f1c40f;
 }
-.legend__link_border_yellow:last-child {
+.legend__link:last-child {
   margin-right: 0;
 }
 .legend__link_disabled {
