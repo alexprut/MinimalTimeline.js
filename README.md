@@ -19,34 +19,34 @@ Live demo: [http://alexprut.github.io/MinimalTimeline.js](http://alexprut.github
 ## Usage
 ```html
 <div class="timeline">
-    <div class="legend clearfix">
-        <a class="blue" href="#" data-type="event">example</a>
-        <a href="#" data-type="big-goal">example</a>
-        <a class="yellow" href="#" data-type="book">example</a>
+    <div class="legend timeline__legend clearfix">
+        <a class="legend__link legend__link_border_blue" href="#" data-type="event">example</a>
+        <a class="legend__link" href="#" data-type="big-goal">example</a>
+        <a class="legend__link legend__link_border_yellow" href="#" data-type="book">example</a>
     </div>
-    <div class="content">
-        <div class="details">
-            <span class="head"></span>
-            <span class="tail"></span>
+    <div class="timeline__content">
+        <div class="timeline-details">
+            <span class="timeline-details__head"></span>
+            <span class="timeline-details__tail"></span>
         </div>
-        <div class="block clearfix" data-year="2016">
-            <div class="box-date hidden">2016</div>
-            <div class="box yellow" data-end="current" data-type="book">
-                <span class="title">
+        <div class="timeline-block clearfix" data-year="2016">
+            <div class="timeline-block__date hidden">2016</div>
+            <div class="timeline-box timeline-box_border_yellow" data-end="current" data-type="book">
+                <span class="timeline-box__title">
                     <a target="_blank" href="#example">
                         example
                     </a>
                 </span>
-                <span class="date">example</span>
+                <span class="timeline-box__date">example</span>
             </div>
         </div>
     </div>
+    <button class="timeline__button">more</button>
 </div>
-<button>more</button>
 
 <script>
     $(function () {
-        $('.timeline').timeline();
+        $('.timeline').timeline({isOneDeep: false});
     });
 </script>
 ```
@@ -56,7 +56,7 @@ For a complete example see [index.html](https://github.com/alexprut/MinimalTimel
 #### Parameters
 |Name|Type|Description|Default|
 |----|----|-----------|-------|
-|isOneDeep|bool|to force or not the mode button to show all the entries with one click|false|
+|```isOneDeep```|```bool```|to force or not the mode button to show all the entries with one click|```false```|
 
 ## License
 MinimalTimeline.js is licensed under the MIT License – see the LICENSE file for details.

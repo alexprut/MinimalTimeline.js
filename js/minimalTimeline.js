@@ -74,10 +74,10 @@ Timeline.prototype.isLastDeep = function () {
 $.fn.timeline = function (options) {
   var isOneDeep = options && options.isOneDeep || false;
   var $handler = $(this)
-  var $entries = $handler.find('.box')
-  var $legendFilters = $handler.find('.legend a')
-  var $moreButton = $handler.find('button')
-  var content = $handler.find('.content')
+  var $entries = $handler.find('.timeline-box')
+  var $legendFilters = $handler.find('.timeline__legend a')
+  var $moreButton = $handler.find('.timeline__button')
+  var content = $handler.find('.timeline__content')
   var types = []
   var timeline = new Timeline()
 
@@ -104,14 +104,14 @@ $.fn.timeline = function (options) {
   }
 
   var addEntryDom = function (entry) {
-    var insertionBlock = $handler.find('.block[data-year=' + (parseInt(entry.endDate.getFullYear()) + 1) + ']')
-    var siblings = insertionBlock.find('.box')
+    var insertionBlock = $handler.find('.timeline-block[data-year=' + (parseInt(entry.endDate.getFullYear()) + 1) + ']')
+    var siblings = insertionBlock.find('.timeline-box')
     var insertionIndex = null
 
     entry.html = $(entry.html).css({'opacity': 0.1}).animate({'opacity': 1})
 
     if (!insertionBlock.length) {
-      insertionBlock = $handler.find('.block').first()
+      insertionBlock = $handler.find('.timeline-block').first()
     }
 
     siblings.each(function (index) {
@@ -157,16 +157,16 @@ $.fn.timeline = function (options) {
     var legendFilter = $(this)
     var type = legendFilter.data('type')
 
-    if (legendFilter.hasClass('disabled')) {
+    if (legendFilter.hasClass('legend__link_disabled')) {
       // Show
       types.push(type)
       showEntriesOfType(type)
-      legendFilter.removeClass('disabled')
+      legendFilter.removeClass('legend__link_disabled')
     } else {
       // Hide
       types.splice(types.indexOf(type), 1)
       removeEntriesOfType(type)
-      legendFilter.addClass('disabled')
+      legendFilter.addClass('legend__link_disabled')
     }
 
     if (!timeline.isLastDeep() && timeline.hasEntriesForNextDeep(type)) {
@@ -177,8 +177,8 @@ $.fn.timeline = function (options) {
   var clickFilters = function (event) {
     event.preventDefault()
     var $legendFilter = $(this)
-    var disabledSiblings = $legendFilter.siblings().filter('.disabled')
-    var isEnabled = !$legendFilter.hasClass('disabled')
+    var disabledSiblings = $legendFilter.siblings().filter('.legend__link_disabled')
+    var isEnabled = !$legendFilter.hasClass('legend__link_disabled')
     var numFilters = $legendFilters.length
 
     switch (numFilters) {
@@ -190,13 +190,13 @@ $.fn.timeline = function (options) {
         }
         break
       default:
-        var enabledFilters = $legendFilter.siblings().filter(':not(.disabled)')
+        var enabledFilters = $legendFilter.siblings().filter(':not(.legend__link_disabled)')
         var isEnabledJustLastFilter = disabledSiblings.length === (numFilters - 2)
 
         if (isEnabled && isEnabledJustLastFilter) {
-          enabledFilters.addClass('not-toggle').off('toggle')
+          enabledFilters.addClass('legend__link_not-toggle').off('toggle')
         } else if (!isEnabled && isEnabledJustLastFilter) {
-          enabledFilters.removeClass('not-toggle').on('toggle', toggleFilters)
+          enabledFilters.removeClass('legend__link_not-toggle').on('toggle', toggleFilters)
         }
         break
     }
@@ -232,7 +232,7 @@ $.fn.timeline = function (options) {
       var $this = $(this)
 
       addEntryTimeline(
-        $this.find('.title a').text().trim(),
+        $this.find('.timeline-box__title a').text().trim(),
         $this.data('deep'),
         $this.data('end'),
         $this.data('type'),

@@ -3,14 +3,6 @@ module.exports = function (grunt) {
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
     less: {
-      development: {
-        options: {
-          paths: ['css']
-        },
-        files: {
-          'path/to/result.css': 'path/to/source.less'
-        }
-      },
       production: {
         files: {
           'css/minimalTimeline.css': 'less/minimalTimeline.less',

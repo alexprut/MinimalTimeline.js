@@ -28,12 +28,10 @@ sup {
 	font-size: 8px;
 }
 
-.placeholder(@white);
-
 button {
 	position: relative;
 	height: @baseline;
-	padding: 0px;
+	padding: 0;
 	border-bottom: 2px solid @nephritis;
 	background-color: @emerald;
 	font: @base-font-size @lato;
@@ -53,12 +51,5 @@ button {
 		cursor: not-allowed;
 		opacity: 0.5;
 		pointer-events: none;
-	}
-}
-
-@keyframes ripple {
-	100% {
-		transform: scale(2.5);
-		opacity: 0;
 	}
 }
